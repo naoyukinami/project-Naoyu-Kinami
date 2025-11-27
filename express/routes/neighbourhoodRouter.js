@@ -5,7 +5,6 @@ import { getNeighbourhoods, getByNeighbourhood, countConstructionByNeighbourhood
 
 //なんでこれが一番上じゃないと動かない？
 neighbourhoodRouter.get('/count', countConstructionByNeighbourhood);
-
 neighbourhoodRouter.get('/', getNeighbourhoods);
 neighbourhoodRouter.get('/:neighbourhoodName', getByNeighbourhood);
 
