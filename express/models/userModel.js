@@ -16,12 +16,10 @@ const createUser = (user_name, email) => {
         return result;
 }
 
-const removeUser = (user_id) => {
+const removeUser = (id) => {
     let result2 = db.prepare(`
-        DELETE FROM users WHERE user_id = ?
-        `).run({
-            "user_id": user_id
-        });
+        DELETE FROM user WHERE id = ?
+        `).run(id);
         return result2;
 }
 export { createUser, removeUser };

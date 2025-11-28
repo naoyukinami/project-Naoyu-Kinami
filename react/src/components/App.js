@@ -6,8 +6,6 @@ import TypeNeighbourhood from "./TypeNeighbourhood.js";
 import Neighbourhood from "./Neighbourhood.js";
 import User from "./User.js";
 import Favorite from "./Favorite.js";
-import Update from "./Update.js";
-
 // import SubmitConstruction from "./SubmitConstruction.js";
 
 const App = props => {

@@ -10,10 +10,41 @@ const addFav = (user_id, neighbourhood_id) => {
         :neighbourhood_id
         )
         `).run({
-            "user_id": user_id,
-            "neighbourhood_id":neighbourhood_id
-        });
-        return result
+        "user_id": user_id,
+        "neighbourhood_id": neighbourhood_id
+    });
+    return result
+}
+const transaction = () => {
+
+    db.prepare(`
+    BEGIN TRANSACTION;
+    `).run();
+
+    let transferAmount = 3;
+
+    try {
+        db.prepare(`
+    UPDATE favorite 
+    SET neighbourhood_id = 5
+    WHERE user_id = 5
+    `).run(transferAmount);
+
+        // process.exit();
+
+        db.prepare(`
+    UPDATE favorite
+    SET neighbourhood_id = 6
+    WHERE user_id = 6
+    `).run(transferAmount);
+
+        db.prepare(`
+    COMMIT;
+    `).run();
+    } catch (err) {
+        db.prepare('ROLLBACK;').run();
+        console.log("somethingwent wrong");
+    }
 }
 
 export default addFav;

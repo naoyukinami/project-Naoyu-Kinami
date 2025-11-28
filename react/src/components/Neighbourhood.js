@@ -2,28 +2,28 @@ import { useEffect, useState } from "react";
 
 const Neighbourhood = props => {
     const [areaConstruction, setAreaConstruction] = useState([]);
-    const [load, setLoad] = useState(false);
-    // const [reload, setReload] = useState(false);
+    const [loading, setLoading] = useState(false);
+    // const [reloading, setReloading] = useState(false);
     const [page, setPage] = useState(0);
 
     useEffect(() => {
         if (!props.chosen2) return;
 
-        setLoad(true);
+        setLoading(true);
 
         fetch(`/api/v1/projects/neighbourhood/${props.chosen2}?page=${page}`)
             .then(response => response.json())
             .then(areaResponse => {
                 setAreaConstruction(areaResponse);
                 // setPage(0);
-                setLoad(false);
+                setLoading(false);
             })
             .catch(err => console.log(err));
-        setLoad(false);
+        setLoading(false);
     }, [props.chosen2, page]);
 
     // const handleButton = () => {
-    //     setReload(!reload);
+    //     setReloading(!reloading);
     // };
 
     const next = () => {
@@ -53,7 +53,7 @@ const Neighbourhood = props => {
     //             <>
     //                 <h3><strong>{props.chosen} Area Construction Detail</strong></h3>
 
-    //                 {load ? (
+    //                 {loading ? (
     //                     <p>Not selected a neighbourhood yet.</p>
     //                 ) : props.chosen &&
     //                 <>
@@ -76,7 +76,7 @@ const Neighbourhood = props => {
                 <h4>{props.chosen2} Area Construction Detail</h4>
             )}
 
-            {load ? (
+            {loading ? (
                 <p>Not selected a neighbourhood yet.</p>
             ) : (
                 <>
