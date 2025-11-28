@@ -6,7 +6,6 @@ import TypeNeighbourhood from "./TypeNeighbourhood.js";
 import Neighbourhood from "./Neighbourhood.js";
 import User from "./User.js";
 import Favorite from "./Favorite.js";
-// import SubmitConstruction from "./SubmitConstruction.js";
 
 const App = props => {
 
@@ -32,7 +31,6 @@ const App = props => {
         <div className="flex2">
             <User />
             <Favorite />
-            <Update />
         </div>
     </>
     );
